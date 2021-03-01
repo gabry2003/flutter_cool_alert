@@ -137,7 +137,9 @@ class CoolAlertContainer extends StatelessWidget {
       return Text(
         text ?? "",
         textAlign: TextAlign.center,
-        color: options.textColor
+        style: new TextStyle(
+		color: options.textColor
+        )
       );
     }
   }
