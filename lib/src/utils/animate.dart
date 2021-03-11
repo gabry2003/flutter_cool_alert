@@ -7,7 +7,7 @@ class Animate {
     @required Animation<double>? animation,
   }) {
     return Transform.scale(
-      scale: (animation?.value)!,
+      scale: (animation?.value) as double,
       child: Opacity(
         opacity: (animation?.value) as double,
         child: child,
