@@ -2,15 +2,16 @@ import 'package:cool_alert/cool_alert.dart';
 import 'package:cool_alert/src/constants/images.dart';
 import 'package:cool_alert/src/models/cool_alert_options.dart';
 import 'package:cool_alert/src/widgets/cool_alert_buttons.dart';
+// ignore: import_of_legacy_library_into_null_safe
 import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
 class CoolAlertContainer extends StatelessWidget {
-  final CoolAlertOptions options;
+  final CoolAlertOptions? options;
 
   const CoolAlertContainer({
-    Key key,
+    Key? key,
     this.options,
   }) : super(key: key);
   @override
@@ -20,16 +21,16 @@ class CoolAlertContainer extends StatelessWidget {
     final _text = _buildText(context);
     final _buttons = _buildButtons();
 
-    final _content = Container(
+    final _content = new Container(
       padding: EdgeInsets.all(20.0),
-      child: Column(
+      child: new Column(
         children: [
           _title,
-          SizedBox(
+          new SizedBox(
             height: 5.0,
           ),
           _text,
-          SizedBox(
+          new SizedBox(
             height: 10.0,
           ),
           _buttons
@@ -47,12 +48,12 @@ class CoolAlertContainer extends StatelessWidget {
   }
 
   Widget _buildHeader(context) {
-    if (options.type == CoolAlertType.loading) {
-      return Container();
+    if (options?.type == CoolAlertType.loading) {
+      return new Container();
     } else {
-      String anim = AppAnim.success;
+      String? anim = AppAnim.success;
 
-      switch (options.type) {
+      switch (options?.type) {
         case CoolAlertType.success:
           anim = AppAnim.success;
           break;
@@ -72,106 +73,102 @@ class CoolAlertContainer extends StatelessWidget {
           anim = AppAnim.info;
       }
 
-      if (options.flareAsset != null) {
-        anim = options.flareAsset;
+      if (options?.flareAsset != null) {
+        anim = options?.flareAsset;
       }
-      return Container(
+      return new Container(
         width: double.infinity,
-        decoration: BoxDecoration(
-          color: options.backgroundColor,
+        decoration: new BoxDecoration(
+          color: options?.backgroundColor,
           borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(options.borderRadius),
-            topRight: Radius.circular(options.borderRadius),
+            topLeft: Radius.circular((options?.borderRadius)!),
+            topRight: Radius.circular((options?.borderRadius)!),
           ),
         ),
-        child: Container(
+        child: new Container(
           height: 150,
           width: 150,
-          child: options.lottieAsset == null
-              ? FlareActor(
+          child: options?.lottieAsset == null
+              ? new FlareActor(
                   anim,
-                  animation: options.flareAnimationName,
+                  animation: options?.flareAnimationName,
                 )
-              : Lottie.asset(options.lottieAsset),
+              : Lottie.asset((options?.lottieAsset)!),
         ),
       );
     }
   }
 
   Widget _buildTitle(context) {
-    if (options.type == CoolAlertType.loading) {
-      return Padding(
+    if (options?.type == CoolAlertType.loading) {
+      return new Padding(
         padding: const EdgeInsets.only(bottom: 0.0),
-        child: Container(
+        child: new Container(
           height: 100,
           width: 100,
-          child: options.lottieAsset == null
-              ? FlareActor(
+          child: options?.lottieAsset == null
+              ? new FlareActor(
                   AppAnim.loading,
-                  animation: options.flareAnimationName,
+                  animation: options?.flareAnimationName,
                 )
-              : Lottie.asset(options.lottieAsset),
+              : Lottie.asset((options?.lottieAsset)!),
         ),
       );
     } else {
-      String title = options.title == null ? _whatTitle() : options.title;
-      return Text(
-        title,
-        style: Theme.of(context).textTheme.headline6.copyWith(
-        	color: options.textColor
+      String? title = options?.title == null ? _whatTitle() : options?.title;
+      return new Text(
+        title!,
+        style: Theme.of(context).textTheme.headline6?.copyWith(
+        	color: options?.textColor
 	),
       );
     }
   }
 
   Widget _buildText(context) {
-    if (options.text == null && options.type != CoolAlertType.loading) {
-      return Container();
+    if (options?.text == null && options?.type != CoolAlertType.loading) {
+      return new Container();
     } else {
-      String text = "";
-      if (options.type == CoolAlertType.loading) {
-        text = options.text ?? "Loading...";
+      String? text = "";
+      if (options?.type == CoolAlertType.loading) {
+        text = options?.text ?? "Loading...";
       } else {
-        text = options.text;
+        text = (options?.text)!;
       }
       return Text(
-        text ?? "",
+        text,
         textAlign: TextAlign.center,
         style: new TextStyle(
-		color: options.textColor
+		color: options?.textColor
         )
       );
     }
   }
 
   Widget _buildButtons() {
-    if (options.type == CoolAlertType.loading) {
-      return Container();
+    if (options?.type == CoolAlertType.loading) {
+      return new Container();
     } else {
-      return CoolAlertButtons(
+      return new CoolAlertButtons(
         options: options,
       );
     }
   }
 
-  String _whatTitle() {
-    switch (options.type) {
+  String? _whatTitle() {
+    switch (options?.type) {
       case CoolAlertType.success:
         return "Success!!!";
       case CoolAlertType.error:
         return "Error!!!";
       case CoolAlertType.warning:
         return "Warning!!!";
-        break;
       case CoolAlertType.confirm:
         return "Are you sure?";
-        break;
       case CoolAlertType.info:
         return "Info!";
-        break;
       case CoolAlertType.loading:
         return null;
-        break;
       default:
         return null;
     }

@@ -2,30 +2,30 @@ import 'package:cool_alert/cool_alert.dart';
 import 'package:flutter/widgets.dart';
 
 class CoolAlertOptions {
-  String title;
-  String text;
+  String? title;
+  String? text;
   CoolAlertType type;
-  CoolAlertAnimType animType;
-  bool barrierDismissible = false;
-  VoidCallback onConfirmBtnTap;
-  VoidCallback onCancelBtnTap;
-  String confirmBtnText;
-  String cancelBtnText;
-  Color confirmBtnColor;
-  TextStyle confirmBtnTextStyle;
-  TextStyle cancelBtnTextStyle;
-  bool showCancelBtn;
-  double borderRadius;
-  Color backgroundColor;
-  Color textColor;
-  String flareAsset;
-  String flareAnimationName;
-  String lottieAsset;
+  CoolAlertAnimType? animType;
+  bool? barrierDismissible = false;
+  VoidCallback? onConfirmBtnTap;
+  VoidCallback? onCancelBtnTap;
+  String? confirmBtnText;
+  String? cancelBtnText;
+  Color? confirmBtnColor;
+  TextStyle? confirmBtnTextStyle;
+  TextStyle? cancelBtnTextStyle;
+  bool? showCancelBtn;
+  double? borderRadius;
+  Color? backgroundColor;
+  Color? textColor;
+  String? flareAsset;
+  String? flareAnimationName;
+  String? lottieAsset;
 
   CoolAlertOptions({
     this.title,
     this.text,
-    @required this.type,
+    required this.type,
     this.animType,
     this.barrierDismissible,
     this.onConfirmBtnTap,

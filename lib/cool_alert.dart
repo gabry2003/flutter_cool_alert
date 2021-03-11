@@ -19,30 +19,30 @@ enum CoolAlertAnimType {
 class CoolAlert {
   static Future show({
     /// BuildContext
-    @required BuildContext context,
+    required BuildContext context,
 
     /// Title of the dialog
-    String title,
+    String? title,
 
     /// Text of the dialog
-    String text,
-    @required CoolAlertType type,
+    String? text,
+    required CoolAlertType type,
     CoolAlertAnimType animType = CoolAlertAnimType.scale,
     bool barrierDismissible = true,
-    VoidCallback onConfirmBtnTap,
-    VoidCallback onCancelBtnTap,
+    VoidCallback? onConfirmBtnTap,
+    VoidCallback? onCancelBtnTap,
     String confirmBtnText = "Ok",
     String cancelBtnText = "Cancel",
     Color confirmBtnColor = const Color(0xFF3085D6),
-    TextStyle confirmBtnTextStyle,
-    TextStyle cancelBtnTextStyle,
+    TextStyle? confirmBtnTextStyle,
+    TextStyle? cancelBtnTextStyle,
     bool showCancelBtn = false,
     double borderRadius = 10.0,
     Color backgroundColor = const Color(0xFF515C6F),
     Color textColor = Colors.black,
-    String flareAsset,
+    String? flareAsset,
     String flareAnimationName = "play",
-    String lottieAsset,
+    String? lottieAsset,
   }) {
     CoolAlertOptions options = new CoolAlertOptions(
       title: title,
@@ -66,12 +66,12 @@ class CoolAlert {
       lottieAsset: lottieAsset,
     );
 
-    Widget child = AlertDialog(
+    Widget child = new AlertDialog(
       contentPadding: EdgeInsets.zero,
-      shape: RoundedRectangleBorder(
+      shape: new RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(borderRadius),
       ),
-      content: CoolAlertContainer(
+      content: new CoolAlertContainer(
         options: options,
       ),
     );
@@ -81,31 +81,25 @@ class CoolAlert {
         switch (animType) {
           case CoolAlertAnimType.scale:
             return Animate.scale(child: child, animation: anim1);
-            break;
           case CoolAlertAnimType.rotate:
             return Animate.rotate(child: child, animation: anim1);
-            break;
           case CoolAlertAnimType.slideInDown:
             return Animate.slideInDown(child: child, animation: anim1);
-            break;
           case CoolAlertAnimType.slideInUp:
             return Animate.slideInUp(child: child, animation: anim1);
-            break;
           case CoolAlertAnimType.slideInLeft:
             return Animate.slideInLeft(child: child, animation: anim1);
-            break;
           case CoolAlertAnimType.slideInRight:
             return Animate.slideInRight(child: child, animation: anim1);
-            break;
           default:
             return child;
         }
       },
-      transitionDuration: Duration(milliseconds: 200),
+      transitionDuration: const Duration(milliseconds: 200),
       barrierDismissible: barrierDismissible,
       barrierLabel: '',
       context: context,
-      pageBuilder: (context, anim1, anim2) => null,
+      pageBuilder: (BuildContext context, Animation<double> anim1, Animation<double> anim2) => null as Widget,
     );
   }
 }
