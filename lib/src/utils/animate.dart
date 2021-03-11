@@ -9,7 +9,7 @@ class Animate {
     return Transform.scale(
       scale: (animation?.value)!,
       child: Opacity(
-        opacity: (animation?.value)!,
+        opacity: (animation?.value) as double,
         child: child,
       ),
     );
@@ -20,9 +20,9 @@ class Animate {
     @required Animation<double>? animation,
   }) {
     return Transform.rotate(
-      angle: math.radians((animation?.value)! * 360),
+      angle: math.radians(((animation?.value) as double) * 360),
       child: new Opacity(
-        opacity: (animation?.value)!,
+        opacity: (animation?.value) as double,
         child: child,
       ),
     );
@@ -32,11 +32,11 @@ class Animate {
     @required Widget? child,
     @required Animation<double>? animation,
   }) {
-    final curvedValue = Curves.easeInOutBack.transform((animation?.value)!) - 1.0;
+    final curvedValue = Curves.easeInOutBack.transform((animation?.value) as double) - 1.0;
     return new Transform(
       transform: Matrix4.translationValues(0.0, curvedValue * 200, 0.0),
       child: new Opacity(
-        opacity: (animation?.value)!,
+        opacity: (animation?.value) as double,
         child: child,
       ),
     );
@@ -46,11 +46,11 @@ class Animate {
     @required Widget? child,
     @required Animation<double>? animation,
   }) {
-    final curvedValue = Curves.easeInOutBack.transform((animation?.value)!) - 1.0;
+    final curvedValue = Curves.easeInOutBack.transform((animation?.value) as double) - 1.0;
     return new Transform(
       transform: Matrix4.translationValues(0.0, curvedValue * -200, 0.0),
       child: new Opacity(
-        opacity: (animation?.value)!,
+        opacity: (animation?.value) as double,
         child: child,
       ),
     );
@@ -60,11 +60,11 @@ class Animate {
     @required Widget? child,
     @required Animation<double>? animation,
   }) {
-    final curvedValue = Curves.easeInOutBack.transform((animation?.value)!) - 1.0;
+    final curvedValue = Curves.easeInOutBack.transform((animation?.value) as double) - 1.0;
     return new Transform(
       transform: Matrix4.translationValues(curvedValue * 200, 0.0, 0.0),
       child: new Opacity(
-        opacity: (animation?.value)!,
+        opacity: (animation?.value) as double,
         child: child,
       ),
     );
@@ -74,11 +74,11 @@ class Animate {
     @required Widget? child,
     @required Animation? animation,
   }) {
-    final curvedValue = Curves.easeInOutBack.transform((animation?.value)!) - 1.0;
+    final curvedValue = Curves.easeInOutBack.transform((animation?.value) as double) - 1.0;
     return new Transform(
       transform: Matrix4.translationValues(curvedValue * -200, 0, 0),
       child: new Opacity(
-        opacity: (animation?.value)!,
+        opacity: (animation?.value) as double,
         child: child,
       ),
     );

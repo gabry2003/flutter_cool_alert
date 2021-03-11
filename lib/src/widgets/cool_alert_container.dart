@@ -81,8 +81,8 @@ class CoolAlertContainer extends StatelessWidget {
         decoration: new BoxDecoration(
           color: options?.backgroundColor,
           borderRadius: BorderRadius.only(
-            topLeft: Radius.circular((options?.borderRadius)!),
-            topRight: Radius.circular((options?.borderRadius)!),
+            topLeft: Radius.circular((options?.borderRadius) as double),
+            topRight: Radius.circular((options?.borderRadius) as double),
           ),
         ),
         child: new Container(
@@ -93,7 +93,7 @@ class CoolAlertContainer extends StatelessWidget {
                   anim,
                   animation: options?.flareAnimationName,
                 )
-              : Lottie.asset((options?.lottieAsset)!),
+              : Lottie.asset((options?.lottieAsset) as String),
         ),
       );
     }
@@ -111,7 +111,7 @@ class CoolAlertContainer extends StatelessWidget {
                   AppAnim.loading,
                   animation: options?.flareAnimationName,
                 )
-              : Lottie.asset((options?.lottieAsset)!),
+              : Lottie.asset((options?.lottieAsset) as String),
         ),
       );
     } else {
@@ -133,10 +133,10 @@ class CoolAlertContainer extends StatelessWidget {
       if (options?.type == CoolAlertType.loading) {
         text = options?.text ?? "Loading...";
       } else {
-        text = (options?.text)!;
+        text = options?.text;
       }
       return Text(
-        text,
+        text ?? "",
         textAlign: TextAlign.center,
         style: new TextStyle(
 		color: options?.textColor
